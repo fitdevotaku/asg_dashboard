@@ -4,7 +4,7 @@ let Fitness = require('../dbModels/fitnessModel');
 router.route('/').get((req, res) => {
   Fitness.find()
   // mongoose comand to search for list of data within our database
-    .then(fit => res.json(fit))
+    .then(fitnesses => res.json(fitnesses))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -29,7 +29,7 @@ router.route('/add').post((req, res) => {
 
 router.route('/:id').get((req, res) => {
   Fitness.findById(req.params.id)
-    .then(fit => res.json(fit))
+    .then(fitness => res.json(fitness))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -42,12 +42,12 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
   Fitness.findById(req.params.id)
     .then(workouts => {
-      fit.username = req.body.username;
-      fit.description = req.body.description;
-      fit.duration = Number(req.body.duration);
-      fit.date = Date.parse(req.body.date);
+      fitness.username = req.body.username;
+      fitness.description = req.body.description;
+      fitness.duration = Number(req.body.duration);
+      fitness.date = Date.parse(req.body.date);
 
-      Fitness.save()
+      fitness.save()
         .then(() => res.json('Exercise updated!'))
         // a promise
         .catch(err => res.status(400).json('Error: ' + err));

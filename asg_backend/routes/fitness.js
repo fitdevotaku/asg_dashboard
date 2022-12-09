@@ -41,7 +41,7 @@ router.route('/:id').delete((req, res) => {
 
 router.route('/update/:id').post((req, res) => {
   Fitness.findById(req.params.id)
-    .then(workouts => {
+    .then(fitness => {
       fitness.username = req.body.username;
       fitness.description = req.body.description;
       fitness.duration = Number(req.body.duration);

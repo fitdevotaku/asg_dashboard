@@ -15,7 +15,7 @@ router.route('/add').post((req, res) => {
   const date = Date.parse(req.body.date);
   // expected JSON variables in our JSON object when added new exercises
 
-  const newFitness = new newFitness({
+  const newFitness = new Fitness({
     username,
     description,
     duration,

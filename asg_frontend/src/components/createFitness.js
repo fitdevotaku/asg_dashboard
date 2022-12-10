@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../components/createFit.css';
+import '../components/routes.css';
 
 export default class CreateFitness extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeUserName = this.onChangeUserName.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeDuration = this.onChangeDuration.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    // assures that "this" works properly referring to our class component. So we're binding this to our methods
 
     this.state = {
       username: '',
@@ -25,14 +25,23 @@ export default class CreateFitness extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      users: ['test user'],
-      username: 'test user'
-    })
+    axios.get('http://localhost:4000/users/')
+      .then(response => {
+        if (response.data.length > 0) {
+          this.setState({
+            users: response.data.map(user => user.username),
+            username: response.data[0].username
+          })
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      // we are checking to see if there is at least one user inside our database.
   }
-  // life cycle method that automatically called before page loads. This is a test method. Eventually data will load from MongoDB
+  // life cycle method that automatically called before page loads. This is a test method. data will load from MongoDB
 
-  onChangeUserName(e) {
+  onChangeUsername(e) {
     this.setState({
       username: e.target.value
     })
@@ -70,6 +79,10 @@ export default class CreateFitness extends Component {
 
     console.log(fitness);
 
+    axios.post('http://localhost:4000/fitness/add', fitness)
+      .then(res => console.log(res.data));
+      // post request to endpoint
+
     window.location = "/";
     // after submitting an fitness log, page goes back to home screen
   }
@@ -101,7 +114,7 @@ export default class CreateFitness extends Component {
           </div>
           <div className="form-section"> 
             <label className="descr">Description: </label>
-            <input  type="text"
+            <input type="text"
                 required
                 className="form-handle"
                 value={this.state.description}

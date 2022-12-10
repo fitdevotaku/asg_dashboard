@@ -35,7 +35,7 @@ function Navbar() {
     <>
       <nav className="navbar">
         <Link to="/" className="navbar-logo" onClick={() => setSidebar(false)}>
-          <img src={ASG} alt="ASG" />
+          <img src={ASG} alt="ASG" /> 
           {/* I do not own any rights to this image - content credited to https://asginc.us/ */}
         </Link>
         {!mobile && (

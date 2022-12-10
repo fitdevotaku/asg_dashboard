@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.form-box h3{
+    text-align: center;
+    font-size: 1.8rem;
+    height: 8vh;
+}
+
+.form-box .form-section {
+    text-align: center;
+    height: 8vh;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.form-box .form-handle {
+    padding: 5px 4px;
+    margin: 4px 0;
+    box-sizing: border-box;
+}
+
+.form-box .btn-btn-primary {
+    padding: 12px 20px;
+    border-radius: 20px;
+    background-color: rgb(253, 248, 222);
+}

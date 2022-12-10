@@ -47,9 +47,11 @@ router.route('/update/:id').post((req, res) => {
       fitness.duration = Number(req.body.duration);
       fitness.date = Date.parse(req.body.date);
       // variables in objects of JSON body when updating fitness list
+
       fitness.save()
         .then(() => res.json('Exercise updated!'))
         // a promise
+        
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));

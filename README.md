@@ -1,4 +1,4 @@
-![home screen](public/viewWorkout.png)
+![desktop view](asg_frontend/public/viewWorkout.png)
 
 
 In the project directory, locate the "asg_backend" directory. Move the folder outside of the "asg_frontend" directory into the root folder. That way when we cd inside our frontend and cd inside our backend on two seperate terminals, we will run the backend on localhost:4000 and our frontend on localhost:3000:

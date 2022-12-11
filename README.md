@@ -10,5 +10,5 @@ In the project directory, locate the "asg_backend" directory. Move the folder ou
 ## Dependencies
 npm install nodemon
 npm install node
-npm install - to install node_modules
+
 
